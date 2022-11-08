@@ -16,7 +16,7 @@ let generateBtn = document.querySelector("#generate");
 function generatePassword() {
   let allChoices = [];
   //ask user how long
-  let passwordLength = window.prompt("please choose a number between 8 and 20 for your password length")
+  let passwordLength = window.prompt("please choose a number between 8 and 258 for your password length")
   // to-do validate that they entered a number between 8 and 20
   // ask user if they want numbers
   let isNumbers = window.confirm("Do you want to include numbers?")
@@ -28,6 +28,11 @@ function generatePassword() {
   let isSpecial = window.confirm("Do you want to include special characters?")
 
   //create a password using random numbers, as long as the length
+
+  if (passwordLength < 258 || password > 8) {
+    alert('You must choose a between 8 and 258');
+    generatePassword();
+  }
 
   if (isNumbers === false && isSpecial === false && isLower === false && isUpper === false) {
     alert('You must choose at least one option');
