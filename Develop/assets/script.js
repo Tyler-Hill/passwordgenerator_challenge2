@@ -29,7 +29,7 @@ function generatePassword() {
 
   //create a password using random numbers, as long as the length
 
-  if (passwordLength < 258 || password > 8) {
+  if (passwordLength <= 258 && passwordLength >= 8) {
     alert('You must choose a between 8 and 258');
     generatePassword();
   }
