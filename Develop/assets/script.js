@@ -15,6 +15,7 @@ let generateBtn = document.querySelector("#generate");
 //this function will generate the password and return it to the correct password
 function generatePassword() {
   let allChoices = [];
+  password = [];
   //ask user how long
   let passwordLength = window.prompt("please choose a number between 8 and 258 for your password length")
   // to-do validate that they entered a number between 8 and 20
@@ -29,8 +30,8 @@ function generatePassword() {
 
   //create a password using random numbers, as long as the length
 
-  if (passwordLength <= 258 && passwordLength >= 8) {
-    alert('You must choose a between 8 and 258');
+  if (passwordLength < 8 || passwordLength > 258) {
+    alert('You must choose a number between 8 and 258');
     generatePassword();
   }
 
