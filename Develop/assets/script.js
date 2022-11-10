@@ -10,18 +10,11 @@ function generatePassword() {
   let allChoices = [];
   password = [];
   let passwordLength = window.prompt("please choose a number between 8 and 258 for your password length");
-  console.log(`value 1: ${passwordLength}`);
 
   if (passwordLength < 8 || passwordLength > 258 || isNaN(passwordLength)) {
     alert("You must choose a number between 8 and 258");
+    console.log(`value 2: ${passwordLength}`);
     let passwordLength = null;
-    generatePassword();
-  }
-
-  if (isNaN(passwordLength)) {
-    alert("Wtf");
-    console.log(`value 2.5: ${passwordLength}`);
-    sessionStorage.clear();
     generatePassword();
   }
 
