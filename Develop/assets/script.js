@@ -1,43 +1,30 @@
-//global variables
-
-//this is my database: numbers, special characters, lowercase letters, uppercase letters
 let number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 let upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 let lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 let special = ["@", "%", "+", "\\", "/", "'", "!", "#", "$", "^", "?", ":", ",", ")", "(", "}", "{", "]", "[", "~", "-", "_", "."];
 let password = [];
 
-// Assignment Code
 let generateBtn = document.querySelector("#generate");
 
-//this function will generate the password and return it to the correct password
 function generatePassword() {
   let allChoices = [];
   password = [];
-  //ask user how long
+
   let passwordLength = window.prompt("please choose a number between 8 and 258 for your password length");
-  // to-do validate that they entered a number between 8 and 20
-  // ask user if they want numbers
+
+  if (passwordLength < 8 || passwordLength > 258 || isNaN(passwordLength)) {
+    alert("You must choose a number between 8 and 258");
+    console.log(passwordLength);
+    writePassword();
+  }
+
   let isNumbers = window.confirm("Do you want to include numbers?");
-  // ask user iuf they want uppercase
+
   let isUpper = window.confirm("Do you want to include uppercase letters?");
-  // ask user if they want lowercase
+
   let isLower = window.confirm("Do you want to include lowercase letters?");
-  // ask user if they want special characters
+
   let isSpecial = window.confirm("Do you want to include special characters?");
-
-  //create a password using random numbers, as long as the length
-
-  if (isNaN(passwordLength) === true) {
-    console.log();
-    alert("You must choose a number between 8 and 258");
-    generatePassword();
-  }
-
-  if (passwordLength < 8 || passwordLength > 258) {
-    alert("You must choose a number between 8 and 258");
-    generatePassword();
-  }
 
   if (isNumbers === false && isSpecial === false && isLower === false && isUpper === false) {
     alert("You must choose at least one option");
@@ -78,7 +65,7 @@ function generatePassword() {
     let rnd = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     password.push(allChoices[rnd]);
   }
-
+  console.log(passwordLength);
   return password;
 }
 
