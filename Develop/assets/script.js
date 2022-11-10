@@ -9,13 +9,20 @@ let generateBtn = document.querySelector("#generate");
 function generatePassword() {
   let allChoices = [];
   password = [];
-
   let passwordLength = window.prompt("please choose a number between 8 and 258 for your password length");
+  console.log(`value 1: ${passwordLength}`);
 
   if (passwordLength < 8 || passwordLength > 258 || isNaN(passwordLength)) {
     alert("You must choose a number between 8 and 258");
-    console.log(passwordLength);
-    writePassword();
+    let passwordLength = null;
+    generatePassword();
+  }
+
+  if (isNaN(passwordLength)) {
+    alert("Wtf");
+    console.log(`value 2.5: ${passwordLength}`);
+    sessionStorage.clear();
+    generatePassword();
   }
 
   let isNumbers = window.confirm("Do you want to include numbers?");
@@ -65,7 +72,7 @@ function generatePassword() {
     let rnd = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     password.push(allChoices[rnd]);
   }
-  console.log(passwordLength);
+  console.log(`value 3: ${passwordLength}`);
   return password;
 }
 
@@ -78,6 +85,7 @@ function writePassword() {
   generatePassword();
   let passwordText = document.querySelector("#password");
   passwordText.value = password.join("");
+  console.log(`value 4: ${passwordLength}`);
 }
 
 // Add event listener to generate button
