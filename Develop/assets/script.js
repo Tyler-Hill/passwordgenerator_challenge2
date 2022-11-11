@@ -13,9 +13,7 @@ function generatePassword() {
 
   if (passwordLength < 8 || passwordLength > 258 || isNaN(passwordLength)) {
     alert("You must choose a number between 8 and 258");
-    console.log(`value 2: ${passwordLength}`);
-    let passwordLength = null;
-    generatePassword();
+    return null;
   }
 
   let isNumbers = window.confirm("Do you want to include numbers?");
@@ -28,7 +26,7 @@ function generatePassword() {
 
   if (isNumbers === false && isSpecial === false && isLower === false && isUpper === false) {
     alert("You must choose at least one option");
-    generatePassword();
+    return null;
   }
 
   if (isNumbers === true) {
